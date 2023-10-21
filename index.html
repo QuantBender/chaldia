@@ -266,7 +266,7 @@
             return wishes[randomIndex];
         }
 
-        const total_secondes = 10;
+        let total_secondes = 15;
         let countdown = total_secondes;
         let progress = 100;
 
@@ -274,6 +274,7 @@
             if (countdown < 0) {
                 const randomLine = selectRandomLine();
                 document.getElementById('message').textContent = randomLine;
+                total_secondes = 10;
                 countdown = total_secondes;
             }
             progress = countdown * (100/total_secondes);
