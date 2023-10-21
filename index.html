@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Romerik</title>
+        <link rel="icon" href="gift.png">
+        <link rel="stylesheet" type="text/css" href="bootstrap\css\style.css">
+        <script type="text/javascript" src="bootstrap\jquery.js"></script>
+        <script type="text/javascript" src="bootstrap\popper.js"></script>
+        <script type="text/javascript" src="bootstrap\bootstrap.js"></script>
+        <style>
+            .content{
+                width: 100%;
+                height: 100vh;
+                background-image: url("background.jpg");
+            }
+            .gift_div{
+                margin: auto;
+                width: 50%;
+                cursor: pointer;
+                transform: scale(0);
+                animation-timing-function: ease;
+                animation-duration: 5s;
+                animation-name: show;
+                animation-delay: 5s;
+                animation-fill-mode: forwards;
+                animation-play-state: running;
+            }
+            .container {
+                padding: 20px;
+                background-color: #ffffff;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+                border-radius: 10px;
+                width: 80%;
+                max-width: 600px;
+                margin: 0 auto;
+            }
+
+            h3 {
+                color: #ff4500;
+                font-size: 36px;
+            }
+
+            p {
+                color: #333;
+                font-size: 18px;
+            }
+
+            #cake {
+                width: 200px;
+            }
+
+            #message {
+                font-style: italic;
+            }
+
+            #countdown {
+                font-size: 24px;
+                color: #ff4500;
+            }
+
+            #progress {
+                width: 100%;
+                height: 20px;
+                background-color: #ccc;
+                position: relative;
+            }
+
+            #bar {
+                width: 0;
+                height: 100%;
+                background-color: #ff4500;
+            }
+            @keyframes show{
+                0%{ 
+                    transform: scale(0);
+                }
+                100%{
+                    transform: scale(1);
+                }
+            }
+            h3{
+                font-family: cursive;
+                color: coral;
+                /* transform: rotate(1800deg) scale(0); */
+                font-size: 2.5em;
+                /* animation: text_zoom 5s ease 3s alternate forwards; */
+            }
+            /* @keyframes text_zoom{
+                from{
+                    transform: rotate(1800deg) scale(0);
+                }
+                to{
+                    transform: rotate(0deg) scale(1);
+                }
+            } */
+            svg{
+                color: white;
+            }
+            #control{
+                position: absolute;
+                top: 20px;
+                left: 20px;
+                cursor: pointer;
+            }
+            @media screen and (min-width: 996px){
+                .gift_div{
+                    width: 20%;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <audio id="audio" loop controls hidden>
+            <source src="music.mp3" type="audio/mpeg">
+            <source src="music.ogg" type="audio/ogg; codecs=vorbis">
+            <source src="music.wav" type="audio/wav">
+        </audio>
+        <div class="content d-flex flex-column justify-content-center align-items-center">
+            <div id="control" class="m-auto">
+                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-volume-up" viewBox="0 0 16 16">
+                    <path d="M11.536 14.01A8.473 8.473 0 0 0 14.026 8a8.473 8.473 0 0 0-2.49-6.01l-.708.707A7.476 7.476 0 0 1 13.025 8c0 2.071-.84 3.946-2.197 5.303l.708.707z"/>
+                    <path d="M10.121 12.596A6.48 6.48 0 0 0 12.025 8a6.48 6.48 0 0 0-1.904-4.596l-.707.707A5.483 5.483 0 0 1 11.025 8a5.483 5.483 0 0 1-1.61 3.89l.706.706z"/>
+                    <path d="M10.025 8a4.486 4.486 0 0 1-1.318 3.182L8 10.475A3.489 3.489 0 0 0 9.025 8c0-.966-.392-1.841-1.025-2.475l.707-.707A4.486 4.486 0 0 1 10.025 8zM7 4a.5.5 0 0 0-.812-.39L3.825 5.5H1.5A.5.5 0 0 0 1 6v4a.5.5 0 0 0 .5.5h2.325l2.363 1.89A.5.5 0 0 0 7 12V4zM4.312 6.39L6 5.04v5.92L4.312 9.61A.5.5 0 0 0 4 9.5H2v-3h2a.5.5 0 0 0 .312-.11z"/>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-volume-mute" viewBox="0 0 16 16">
+                    <path d="M6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06zM6 5.04L4.312 6.39A.5.5 0 0 1 4 6.5H2v3h2a.5.5 0 0 1 .312.11L6 10.96V5.04zm7.854.606a.5.5 0 0 1 0 .708L12.207 8l1.647 1.646a.5.5 0 0 1-.708.708L11.5 8.707l-1.646 1.647a.5.5 0 0 1-.708-.708L10.793 8 9.146 6.354a.5.5 0 1 1 .708-.708L11.5 7.293l1.646-1.647a.5.5 0 0 1 .708 0z"/>
+                </svg>
+            </div>
+            <div class="container">
+                <div class="gift_div">
+                    <img class="w-100" src="gift.png" alt="gift">
+                </div>
+                <h3 class="text-center">Joyeux Anniversaire Romerik !</h3>
+                <p id="message" class="text-center">Que cette journée spéciale soit remplie de joie, d'amour et de moments mémorables. Puisses-tu réaliser tous tes rêves et aspirations.</p>
+                <p id="countdown"></p>
+                <div id="progress">
+                    <div id="bar"></div>
+                </div>
+                <p class="text-center mt-5">Ton Johanu &#9997;&#9997;&#9997;</p>
+            </div>
+        </div>
+    </body>
+    <script type="text/javascript" src="jquery.js"></script>
+    <script>
+        let wishes = [
+            "Que cette journée t'apporte tout le bonheur que tu mérites, joyeux anniversaire, mon ami !",
+            "Les années passent, mais notre amitié reste éternelle. Bon anniversaire, cher ami !",
+            "En ce jour spécial, je te souhaite amour, bonheur et succès. Joyeux anniversaire !",
+            "Que cette nouvelle année de vie t'apporte de belles aventures et beaucoup de succès.",
+            "Joyeux anniversaire ! Que cette journée soit aussi lumineuse que ton sourire.",
+            "Les vrais amis sont comme des étoiles, on ne les voit pas toujours, mais on sait qu'ils sont toujours là. Bon anniversaire, mon ami !",
+            "Que ton anniversaire soit le début d'une année exceptionnelle pour toi.",
+            "À mon ami extraordinaire, je te souhaite une journée extraordinaire. Joyeux anniversaire !",
+            "Puisses-tu réaliser tous tes rêves et aspirations au cours de cette nouvelle année de vie.",
+            "Joyeux anniversaire à la personne qui fait briller ma vie comme un rayon de soleil.",
+            "Que la joie et le bonheur t'entourent en ce jour spécial. Bon anniversaire !",
+            "Les amis comme toi sont rares et précieux. Joyeux anniversaire à un trésor !",
+            "Puisses-tu continuer à sourire, à rire et à être heureux chaque jour de ta vie.",
+            "Que cette année te réserve de belles surprises et de grands succès. Joyeux anniversaire !",
+            "Les anniversaires sont des occasions spéciales pour célébrer des personnes spéciales comme toi.",
+            "Bon anniversaire à mon ami incroyable. Que ta journée soit aussi merveilleuse que toi !",
+            "Que ton chemin soit illuminé de bonheur et d'amour. Joyeux anniversaire !",
+            "À toi, mon ami, je souhaite une année pleine de nouvelles expériences et de moments mémorables.",
+            "Joyeux anniversaire à quelqu'un qui rend le monde plus lumineux avec sa présence.",
+            "Ton amitié est un cadeau précieux. Bon anniversaire, cher ami !",
+            "Que cette nouvelle année de vie t'apporte tout ce que tu désires. Joyeux anniversaire !",
+            "Bon anniversaire à l'ami qui rend chaque jour plus spécial avec sa gentillesse et son sourire.",
+            "Que cette journée t'apporte autant de bonheur que tu apportes aux autres. Joyeux anniversaire !",
+            "Que chaque instant de cette journée soit rempli d'amour et de rires. Bon anniversaire !",
+            "Les amis sont les fleurs de la vie. Merci d'égayer ma vie, joyeux anniversaire !",
+            "Que cette année soit la meilleure de toutes, remplie d'amour, de succès et de bonheur.",
+            "À un ami qui mérite tout le bonheur du monde, joyeux anniversaire !",
+            "Puisses-tu continuer à briller comme l'étoile que tu es. Bon anniversaire, cher ami !",
+            "Que tous tes rêves se réalisent en cette nouvelle année. Joyeux anniversaire !",
+            "Les amis comme toi sont rares et précieux. Bon anniversaire à une personne exceptionnelle !",
+            "Que chaque jour de ta vie soit aussi spécial que ce jour d'anniversaire. Joyeux anniversaire !",
+            "À l'ami le plus extraordinaire, je te souhaite la plus extraordinaire des journées.",
+            "Que ton anniversaire soit le début d'une année remplie de bonheur et de succès.",
+            "Bon anniversaire à quelqu'un qui rend le monde plus beau par sa simple présence.",
+            "Puisses-tu être entouré d'amour et de joie en cette journée spéciale. Joyeux anniversaire !",
+            "Que tous tes souhaits et tes rêves se réalisent. Bon anniversaire, cher ami !",
+            "Ton amitié est le plus beau cadeau que la vie m'ait offert. Joyeux anniversaire !",
+            "Puisses-tu avoir une année pleine de bonheur, d'amour et de réussite. Bon anniversaire !",
+            "Les amis comme toi sont rares, mais je suis reconnaissant de t'avoir. Joyeux anniversaire !",
+            "Que chaque jour de ta vie soit aussi spécial que ce jour d'anniversaire. Bon anniversaire !",
+            "À un ami merveilleux, je souhaite une journée merveilleuse et une année incroyable.",
+            "Que cette année t'apporte tout le bonheur que tu mérites. Joyeux anniversaire !",
+            "Bon anniversaire à quelqu'un qui rend chaque jour plus spécial par sa présence.",
+            "Que ton anniversaire soit le début d'une année pleine de joie, d'amour et de succès.",
+            "Puisses-tu réaliser tous tes rêves et aspirations. Joyeux anniversaire, cher ami !",
+            "Les amis comme toi sont rares, mais précieux. Bon anniversaire à un trésor !",
+            "Que chaque jour de cette année soit rempli de sourires et de moments inoubliables.",
+            "Joyeux anniversaire à un ami extraordinaire. Que cette journée te soit exceptionnelle !",
+            "Que cette nouvelle année de vie t'apporte des aventures incroyables et beaucoup de bonheur.",
+            "Bon anniversaire à la personne qui éclaire ma vie comme un rayon de soleil.",
+            "Puisses-tu continuer à sourire, à rire et à être heureux chaque jour de ta vie. Joyeux anniversaire !",
+            "Les anniversaires sont des occasions spéciales pour célébrer des personnes spéciales comme toi.",
+            "Bon anniversaire à mon ami incroyable. Que ta journée soit aussi merveilleuse que toi !",
+            "Que ton chemin soit illuminé de bonheur et d'amour. Joyeux anniversaire !",
+            "À toi, mon ami, je souhaite une année pleine de nouvelles expériences et de moments mémorables.",
+            "Joyeux anniversaire à quelqu'un qui rend le monde plus lumineux avec sa présence.",
+            "Ton amitié est un cadeau précieux. Bon anniversaire, cher ami !",
+            "Que cette nouvelle année de vie t'apporte tout ce que tu désires. Joyeux anniversaire !",
+            "Bon anniversaire à l'ami qui rend chaque jour plus spécial avec sa gentillesse et son sourire.",
+            "Que cette journée t'apporte autant de bonheur que tu apportes aux autres. Joyeux anniversaire !",
+            "Que chaque instant de cette journée soit rempli d'amour et de rires. Bon anniversaire !",
+            "Les amis sont les fleurs de la vie. Merci d'égayer ma vie, joyeux anniversaire !",
+            "Que cette année soit la meilleure de toutes, remplie d'amour, de succès et de bonheur.",
+            "À un ami qui mérite tout le bonheur du monde, joyeux anniversaire !",
+            "Puisses-tu continuer à briller comme l'étoile que tu es. Bon anniversaire, cher ami !",
+            "Que tous tes rêves se réalisent en cette nouvelle année. Joyeux anniversaire !",
+            "Les amis comme toi sont rares et précieux. Bon anniversaire à une personne exceptionnelle !",
+            "Que chaque jour de ta vie soit aussi spécial que ce jour d'anniversaire. Joyeux anniversaire !",
+            "À l'ami le plus extraordinaire, je te souhaite la plus extraordinaire des journées.",
+            "Que ton anniversaire soit le début d'une année remplie de bonheur et de succès.",
+            "Bon anniversaire à quelqu'un qui rend le monde plus beau par sa simple présence.",
+            "Puisses-tu être entouré d'amour et de joie en cette journée spéciale. Joyeux anniversaire !",
+            "Que tous tes souhaits et tes rêves se réalisent. Bon anniversaire, cher ami !",
+            "Ton amitié est le plus beau cadeau que la vie m'ait offert. Joyeux anniversaire !",
+            "Puisses-tu avoir une année pleine de bonheur, d'amour et de réussite. Bon anniversaire !",
+            "Les amis comme toi sont rares, mais je suis reconnaissant de t'avoir. Joyeux anniversaire !",
+            "Que chaque jour de ta vie soit aussi spécial que ce jour d'anniversaire. Bon anniversaire !",
+            "À un ami merveilleux, je souhaite une journée merveilleuse et une année incroyable.",
+            "Que cette année t'apporte tout le bonheur que tu mérites. Joyeux anniversaire !",
+            "Bon anniversaire à quelqu'un qui rend chaque jour plus spécial par sa présence.",
+            "Que ton anniversaire soit le début d'une année pleine de joie, d'amour et de succès.",
+            "Puisses-tu réaliser tous tes rêves et aspirations. Joyeux anniversaire, cher ami !",
+            "Les amis comme toi sont rares, mais précieux. Bon anniversaire à un trésor !",
+            "Que chaque jour de cette année soit rempli de sourires et de moments inoubliables.",
+            "Joyeux anniversaire à un ami extraordinaire. Que cette journée te soit exceptionnelle !",
+            "Que cette nouvelle année de vie t'apporte des aventures incroyables et beaucoup de bonheur.",
+            "Bon anniversaire à la personne qui éclaire ma vie comme un rayon de soleil.",
+            "Puisses-tu continuer à sourire, à rire et à être heureux chaque jour de ta vie. Joyeux anniversaire !",
+            "Les anniversaires sont des occasions spéciales pour célébrer des personnes spéciales comme toi.",
+            "Bon anniversaire à mon ami incroyable. Que ta journée soit aussi merveilleuse que toi !",
+            "Que ton chemin soit illuminé de bonheur et d'amour. Joyeux anniversaire !",
+            "À toi, mon ami, je souhaite une année pleine de nouvelles expériences et de moments mémorables.",
+            "Joyeux anniversaire à quelqu'un qui rend le monde plus lumineux avec sa présence.",
+            "Ton amitié est un cadeau précieux. Bon anniversaire, cher ami !",
+            "Que cette nouvelle année de vie t'apporte tout ce que tu désires. Joyeux anniversaire !",
+            "Bon anniversaire à l'ami qui rend chaque jour plus spécial avec sa gentillesse et son sourire.",
+            "Que cette journée t'apporte autant de bonheur que tu apportes aux autres. Joyeux anniversaire !",
+            "Que chaque instant de cette journée soit rempli d'amour et de rires. Bon anniversaire !",
+            "Les amis sont les fleurs de la vie. Merci d'égayer ma vie, joyeux anniversaire !",
+            "Que cette année soit la meilleure de toutes, remplie d'amour, de succès et de bonheur.",
+        ]
+        $(function(){
+            $(".bi-volume-up").hide();
+            $(".bi-volume-mute").click(function(){
+                var audio = document.getElementById('audio');
+                audio.play();
+                $(this).hide();
+                $(".bi-volume-up").slideToggle();
+            });
+            $(".bi-volume-up").click(function(){7
+                var audio = document.getElementById('audio');
+                audio.pause();
+                $(this).hide();
+                $(".bi-volume-mute").slideToggle();
+            });
+        });
+
+        function selectRandomLine() {
+            const randomIndex = Math.floor(Math.random() * wishes.length);
+            return wishes[randomIndex];
+        }
+
+        const total_secondes = 10;
+        let countdown = total_secondes;
+        let progress = 100;
+
+        function updateCountdown() {
+            if (countdown < 0) {
+                const randomLine = selectRandomLine();
+                document.getElementById('message').textContent = randomLine;
+                countdown = total_secondes;
+            }
+            progress = countdown * (100/total_secondes);
+            
+            document.getElementById('bar').style.width = `${progress}%`;
+
+            document.getElementById('countdown').textContent = `${countdown} secondes`;
+
+            countdown--;
+        }
+
+        updateCountdown();
+
+        setInterval(updateCountdown, 1000);
+    </script>
+</html>
